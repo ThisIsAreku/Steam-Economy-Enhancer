@@ -2268,6 +2268,10 @@
         }
 
         function marketListingsQueueWorker(listing, ignoreErrors, callback) {
+            if (!listing.appid) {
+                callback(true, true);
+                return;
+            }
             var asset = unsafeWindow.g_rgAssets[listing.appid][listing.contextid][listing.assetid];
 
             // An asset:
